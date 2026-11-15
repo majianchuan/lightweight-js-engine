@@ -114,7 +114,7 @@ python tools/run_test262.py --workers 24 --timeout 6
 
 ## 3. 架构
 
-```
+```text
 源码
   │  OXC Parser (AST)
   ▼
@@ -150,15 +150,15 @@ VM (src/vm.rs: Interp / Frame / execute_frame / call_function)
 
 在本机 Windows 11 + Rust release 构建下，使用 `tools/run_test262.py --workers 24 --timeout 6` 完整运行 54,089 个测试文件：
 
-| 指标 | 数值 |
-|---|---:|
-| 测试文件总数 | 54,089 |
-| 通过（PASS） | 28,082 |
-| 失败（FAIL） | 16,214 |
-| 跳过（SKIP，未实现的可选特性） | 9,793 |
-| **通过率（PASS / (PASS + FAIL)）** | **63.40%** |
-| 通过率（PASS / 全部文件） | 51.92% |
-| 核心 ECMAScript 通过率（排除 `intl402/` 与 `staging/`） | 65.94% |
+| 指标                                                    |       数值 |
+| ------------------------------------------------------- | ---------: |
+| 测试文件总数                                            |     54,089 |
+| 通过（PASS）                                            |     28,082 |
+| 失败（FAIL）                                            |     16,214 |
+| 跳过（SKIP，未实现的可选特性）                          |      9,793 |
+| **通过率（PASS / (PASS + FAIL)）**                      | **63.40%** |
+| 通过率（PASS / 全部文件）                               |     51.92% |
+| 核心 ECMAScript 通过率（排除 `intl402/` 与 `staging/`） |     65.94% |
 
 > 上表为加入类早期错误、`with`、`switch` 内 `break`、`new.target` 校验、`TypedArray.from/of` 等修复后的基线；完整日志见 `docs/test262-latest.txt`，方法与失败分类见 `docs/TEST262.md`。
 
@@ -166,14 +166,14 @@ VM (src/vm.rs: Interp / Frame / execute_frame / call_function)
 
 分类通过率（同一轮）：
 
-| 分类 | PASS | FAIL | SKIP | 通过率 |
-|---|---:|---:|---:|---:|
-| `language` | 15,249 | 6,843 | 2,023 | 69.0% |
-| `built-ins` | 11,622 | 6,690 | 5,570 | 63.5% |
-| `annexB` | 452 | 630 | 4 | 41.8% |
-| `harness` | 109 | 8 | 0 | 93.2% |
-| `staging`（提案） | 627 | 783 | 85 | 44.5% |
-| `intl402`（ECMA-402） | 23 | 1,260 | 2,111 | 1.8% |
+| 分类                  |   PASS |  FAIL |  SKIP | 通过率 |
+| --------------------- | -----: | ----: | ----: | -----: |
+| `language`            | 15,249 | 6,843 | 2,023 |  69.0% |
+| `built-ins`           | 11,622 | 6,690 | 5,570 |  63.5% |
+| `annexB`              |    452 |   630 |     4 |  41.8% |
+| `harness`             |    109 |     8 |     0 |  93.2% |
+| `staging`（提案）     |    627 |   783 |    85 |  44.5% |
+| `intl402`（ECMA-402） |     23 | 1,260 | 2,111 |   1.8% |
 
 完整的运行方法、特性范围与失败分类见 [docs/TEST262.md](docs/TEST262.md)。
 
@@ -193,7 +193,7 @@ python tools/bench.py --runs 5
 
 ## 6. 项目结构
 
-```
+```text
 src/
   main.rs              CLI 入口
   lib.rs               模块导出
@@ -246,15 +246,15 @@ python tools/run_test262.py --filter language/expressions/addition
 
 第三方依赖与用途：
 
-| crate | 用途 |
-|---|---|
-| `oxc_parser` / `oxc_ast` / `oxc_span` / `oxc_allocator` | JavaScript 解析与 AST |
-| `regress` | ECMAScript 正则表达式引擎 |
-| `ryu-js` | 符合 ECMAScript 的数字转字符串 |
-| `num-bigint` | BigInt |
-| `chrono` | Date 解析/格式化 |
-| `serde_json` | JSON.parse/stringify |
-| `indexmap` | 保持属性插入顺序 |
-| `unicode-id-start` / `unicode-normalization` | 标识符与字符串规范化 |
+| crate                                                   | 用途                           |
+| ------------------------------------------------------- | ------------------------------ |
+| `oxc_parser` / `oxc_ast` / `oxc_span` / `oxc_allocator` | JavaScript 解析与 AST          |
+| `regress`                                               | ECMAScript 正则表达式引擎      |
+| `ryu-js`                                                | 符合 ECMAScript 的数字转字符串 |
+| `num-bigint`                                            | BigInt                         |
+| `chrono`                                                | Date 解析/格式化               |
+| `serde_json`                                            | JSON.parse/stringify           |
+| `indexmap`                                              | 保持属性插入顺序               |
+| `unicode-id-start` / `unicode-normalization`            | 标识符与字符串规范化           |
 
 除上述基础库外，语言语义、字节码、VM、对象模型、内建对象均为本项目自研实现。
