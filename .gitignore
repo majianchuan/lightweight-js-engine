@@ -1,0 +1,33 @@
+# Rust build artifacts
+/target/
+
+# External test262 checkout (see README: git clone ... test262)
+/test262/
+
+# Generated test / benchmark output
+*.log
+*.out
+*.err
+/pyfull*.txt
+/test262-failures.txt
+
+# Temporary / backup files
+*.tmp
+*.bak
+*.orig
+*.rej
+*.swp
+*~
+
+# Python tooling
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS / editor metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
